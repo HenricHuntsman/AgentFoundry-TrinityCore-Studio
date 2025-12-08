@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import './CodeEditor.css';
 
@@ -93,7 +93,7 @@ VALUES
       return;
     }
 
-    const result = await (window as any).electronAPI.writeFile(currentFile, code);
+    const result = await window.electronAPI.writeFile(currentFile, code);
     if (result.success) {
       alert('File saved successfully!');
     } else {
@@ -105,8 +105,8 @@ VALUES
     const filename = prompt('Enter file path:');
     if (!filename) return;
 
-    const result = await (window as any).electronAPI.readFile(filename);
-    if (result.success) {
+    const result = await window.electronAPI.readFile(filename);
+    if (result.success && result.content) {
       setCode(result.content);
       setCurrentFile(filename);
       

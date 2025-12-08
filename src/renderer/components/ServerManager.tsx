@@ -12,20 +12,20 @@ const ServerManager: React.FC = () => {
 
   useEffect(() => {
     // Listen for server logs
-    if ((window as any).electronAPI) {
-      (window as any).electronAPI.onWorldServerLog((log: string) => {
+    if (window.electronAPI) {
+      window.electronAPI.onWorldServerLog((log: string) => {
         setWorldServerLogs((prev) => [...prev, log].slice(-1000)); // Keep last 1000 lines
       });
 
-      (window as any).electronAPI.onAuthServerLog((log: string) => {
+      window.electronAPI.onAuthServerLog((log: string) => {
         setAuthServerLogs((prev) => [...prev, log].slice(-1000));
       });
 
-      (window as any).electronAPI.onWorldServerStatus((status: string) => {
+      window.electronAPI.onWorldServerStatus((status: string) => {
         setWorldServerStatus(status);
       });
 
-      (window as any).electronAPI.onAuthServerStatus((status: string) => {
+      window.electronAPI.onAuthServerStatus((status: string) => {
         setAuthServerStatus(status);
       });
     }
@@ -37,7 +37,7 @@ const ServerManager: React.FC = () => {
       return;
     }
     setWorldServerStatus('starting');
-    const result = await (window as any).electronAPI.startWorldServer(worldServerPath);
+    const result = await window.electronAPI.startWorldServer(worldServerPath);
     if (result.success) {
       setWorldServerStatus('running');
       setWorldServerLogs((prev) => [...prev, `[INFO] ${result.message}`]);
@@ -49,7 +49,7 @@ const ServerManager: React.FC = () => {
 
   const stopWorldServer = async () => {
     setWorldServerStatus('stopping');
-    const result = await (window as any).electronAPI.stopWorldServer();
+    const result = await window.electronAPI.stopWorldServer();
     if (result.success) {
       setWorldServerStatus('stopped');
       setWorldServerLogs((prev) => [...prev, `[INFO] ${result.message}`]);
@@ -64,7 +64,7 @@ const ServerManager: React.FC = () => {
       return;
     }
     setAuthServerStatus('starting');
-    const result = await (window as any).electronAPI.startAuthServer(authServerPath);
+    const result = await window.electronAPI.startAuthServer(authServerPath);
     if (result.success) {
       setAuthServerStatus('running');
       setAuthServerLogs((prev) => [...prev, `[INFO] ${result.message}`]);
@@ -76,7 +76,7 @@ const ServerManager: React.FC = () => {
 
   const stopAuthServer = async () => {
     setAuthServerStatus('stopping');
-    const result = await (window as any).electronAPI.stopAuthServer();
+    const result = await window.electronAPI.stopAuthServer();
     if (result.success) {
       setAuthServerStatus('stopped');
       setAuthServerLogs((prev) => [...prev, `[INFO] ${result.message}`]);

@@ -138,13 +138,14 @@ function stopAuthServer() {
 }
 
 // Database IPC Handlers
-ipcMain.handle('db-query', async (event, query: string, params?: any[]) => {
+ipcMain.handle('db-query', async (_event, _query: string, _params?: unknown[]) => {
   // Database query handler - will be implemented with actual DB connection
   return { success: true, data: [] };
 });
 
 // File System IPC Handlers
-ipcMain.handle('read-file', async (event, filePath: string) => {
+ipcMain.handle('read-file', async (_event, filePath: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const fs = require('fs').promises;
   try {
     const content = await fs.readFile(filePath, 'utf-8');
@@ -154,7 +155,8 @@ ipcMain.handle('read-file', async (event, filePath: string) => {
   }
 });
 
-ipcMain.handle('write-file', async (event, filePath: string, content: string) => {
+ipcMain.handle('write-file', async (_event, filePath: string, content: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const fs = require('fs').promises;
   try {
     await fs.writeFile(filePath, content, 'utf-8');

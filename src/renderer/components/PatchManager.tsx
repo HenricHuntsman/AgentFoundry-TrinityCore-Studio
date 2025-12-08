@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './PatchManager.css';
 
 const PatchManager: React.FC = () => {
-  const [patches, setPatches] = useState([
+  const [patches] = useState([
     { name: 'patch-1.mpq', size: '2.3 GB', status: 'active' },
     { name: 'patch-2.mpq', size: '1.8 GB', status: 'active' },
     { name: 'patch-custom.mpq', size: '450 MB', status: 'active' },
   ]);
 
-  const [dbcFiles, setDbcFiles] = useState([
+  const [dbcFiles] = useState([
     { name: 'Spell.dbc', modified: false, lastEdit: '2024-01-15' },
     { name: 'Item.dbc', modified: true, lastEdit: '2024-01-20' },
     { name: 'Creature.dbc', modified: false, lastEdit: '2024-01-10' },

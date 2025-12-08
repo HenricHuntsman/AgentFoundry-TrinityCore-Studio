@@ -3,7 +3,7 @@ import './DatabaseManager.css';
 
 interface TableData {
   columns: string[];
-  rows: any[];
+  rows: Record<string, unknown>[];
 }
 
 const DatabaseManager: React.FC = () => {
@@ -16,7 +16,7 @@ const DatabaseManager: React.FC = () => {
   const [selectedTable, setSelectedTable] = useState('creature_template');
   const [tableData, setTableData] = useState<TableData>({ columns: [], rows: [] });
   const [searchTerm, setSearchTerm] = useState('');
-  const [editingRow, setEditingRow] = useState<any>(null);
+  const [editingRow, setEditingRow] = useState<Record<string, unknown> | null>(null);
 
   const tables = [
     'creature_template',
@@ -39,7 +39,7 @@ const DatabaseManager: React.FC = () => {
     setTableData({ columns: [], rows: [] });
   };
 
-  const loadTableData = async (table: string) => {
+  const loadTableData = async (_table: string) => {
     // Placeholder - would query actual database
     const sampleData: TableData = {
       columns: ['entry', 'name', 'subname', 'minlevel', 'maxlevel', 'faction'],
@@ -59,14 +59,14 @@ const DatabaseManager: React.FC = () => {
   };
 
   const handleCreate = () => {
-    const newRow = {};
+    const newRow: Record<string, unknown> = {};
     tableData.columns.forEach(col => {
-      (newRow as any)[col] = '';
+      newRow[col] = '';
     });
     setEditingRow(newRow);
   };
 
-  const handleEdit = (row: any) => {
+  const handleEdit = (row: Record<string, unknown>) => {
     setEditingRow({ ...row });
   };
 
@@ -77,7 +77,7 @@ const DatabaseManager: React.FC = () => {
     loadTableData(selectedTable);
   };
 
-  const handleDelete = async (row: any) => {
+  const handleDelete = async (row: Record<string, unknown>) => {
     if (confirm(`Are you sure you want to delete entry ${row.entry}?`)) {
       // Placeholder for actual database delete
       alert('Row deleted successfully!');

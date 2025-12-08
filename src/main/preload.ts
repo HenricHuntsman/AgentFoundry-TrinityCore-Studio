@@ -24,7 +24,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   },
   
   // Database operations
-  dbQuery: (query: string, params?: any[]) => ipcRenderer.invoke('db-query', query, params),
+  dbQuery: (query: string, params?: unknown[]) => ipcRenderer.invoke('db-query', query, params),
   
   // File system operations
   readFile: (path: string) => ipcRenderer.invoke('read-file', path),
