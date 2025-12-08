@@ -157,9 +157,27 @@ export class UpdateService {
       if (type === 'lua') {
         // Use luac to check Lua syntax if available
         try {
-          // Escape file path to prevent command injection
-          const escapedPath = filePath.replace(/"/g, '\\"');
-          await execAsync(`luac -p "${escapedPath}"`);
+          // Use spawn instead of exec to avoid shell injection
+          const { spawn } = require('child_process');
+          const luac = spawn('luac', ['-p', filePath]);
+          
+          let stderr = '';
+          luac.stderr.on('data', (data: Buffer) => {
+            stderr += data.toString();
+          });
+
+          await new Promise((resolve, reject) => {
+            luac.on('close', (code: number) => {
+              if (code !== 0) {
+                reject(new Error(stderr || 'Lua validation failed'));
+              } else {
+                resolve(null);
+              }
+            });
+            luac.on('error', (err: Error) => {
+              reject(err);
+            });
+          });
         } catch (error: any) {
           errors.push(error.message);
         }

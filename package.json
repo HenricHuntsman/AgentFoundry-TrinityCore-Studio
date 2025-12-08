@@ -62,8 +62,7 @@
       "target": [
         "nsis",
         "portable"
-      ],
-      "icon": "assets/icon.ico"
+      ]
     },
     "linux": {
       "target": [
@@ -71,8 +70,7 @@
         "deb",
         "rpm"
       ],
-      "category": "Development",
-      "icon": "assets/icon.png"
+      "category": "Development"
     },
     "nsis": {
       "oneClick": false,
