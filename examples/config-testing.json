@@ -1,0 +1,28 @@
+{
+  "version": "3.3.5",
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "test_user",
+    "password": "test_password",
+    "worldDatabase": "world_test",
+    "authDatabase": "auth_test",
+    "charactersDatabase": "characters_test"
+  },
+  "realm": {
+    "name": "Test Realm",
+    "address": "127.0.0.1",
+    "localAddress": "127.0.0.1",
+    "port": 8085
+  },
+  "server": {
+    "dataDir": "./test_data",
+    "logDir": "./test_logs",
+    "maxPlayers": 10
+  },
+  "updates": {
+    "autoCheck": false,
+    "autoApply": false,
+    "source": "https://github.com/TrinityCore/TrinityCore"
+  }
+}

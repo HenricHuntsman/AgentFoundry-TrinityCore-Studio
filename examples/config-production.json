@@ -1,0 +1,28 @@
+{
+  "version": "3.3.5",
+  "database": {
+    "host": "db.example.com",
+    "port": 3306,
+    "username": "trinity_prod",
+    "password": "CHANGE_ME_SECURE_PASSWORD",
+    "worldDatabase": "world_production",
+    "authDatabase": "auth_production",
+    "charactersDatabase": "characters_production"
+  },
+  "realm": {
+    "name": "My Awesome WoW Server",
+    "address": "wow.example.com",
+    "localAddress": "192.168.1.100",
+    "port": 8085
+  },
+  "server": {
+    "dataDir": "/opt/trinitycore/data",
+    "logDir": "/var/log/trinitycore",
+    "maxPlayers": 500
+  },
+  "updates": {
+    "autoCheck": true,
+    "autoApply": false,
+    "source": "https://github.com/TrinityCore/TrinityCore"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": "3.3.5",
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "trinity",
+    "password": "trinity",
+    "worldDatabase": "world",
+    "authDatabase": "auth",
+    "charactersDatabase": "characters"
+  },
+  "realm": {
+    "name": "TrinityCore Development Realm",
+    "address": "127.0.0.1",
+    "localAddress": "127.0.0.1",
+    "port": 8085
+  },
+  "server": {
+    "dataDir": "./data",
+    "logDir": "./logs",
+    "maxPlayers": 100
+  },
+  "updates": {
+    "autoCheck": true,
+    "autoApply": false,
+    "source": "https://github.com/TrinityCore/TrinityCore"
+  }
+}
