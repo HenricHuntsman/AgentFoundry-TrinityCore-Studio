@@ -1,0 +1,74 @@
+name: Build and Test - Windows
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Type check
+      run: npm run type-check
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Build main process
+      run: npm run build:main
+
+    - name: Build renderer
+      run: npm run build:renderer
+
+    - name: Run tests
+      run: npm test
+
+    - name: Package for Windows
+      run: npm run package:win
+      
+    - name: Upload Windows artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: windows-build
+        path: release/*.exe
+
+    - name: Validate server scripts
+      run: |
+        echo "Validating TrinityCore integration..."
+        # Add validation logic here
+        
+  validate-sql:
+    runs-on: windows-latest
+    needs: build-windows
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Validate SQL files
+      run: |
+        echo "Running SQL validation..."
+        # SQL validation would go here

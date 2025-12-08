@@ -1,0 +1,115 @@
+.update-manager {
+  max-width: 900px;
+}
+
+.update-manager h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.update-section,
+.validation-section {
+  background-color: #1e1e1e;
+  border: 1px solid #3e3e42;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.update-section h3,
+.validation-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.update-info {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #2d2d30;
+  border-radius: 4px;
+}
+
+.version-info {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.version-info p {
+  margin: 5px 0;
+  color: #cccccc;
+}
+
+.updates-available {
+  margin: 15px 0;
+}
+
+.updates-available h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.updates-available ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  color: #cccccc;
+}
+
+.updates-available li {
+  margin: 5px 0;
+}
+
+.validation-section p {
+  color: #cccccc;
+  margin-bottom: 10px;
+}
+
+.validation-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 15px;
+}
+
+.validation-section li {
+  padding: 5px 0;
+  color: #858585;
+}
+
+.validation-result {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.validation-result.valid {
+  background-color: rgba(16, 124, 16, 0.1);
+  border: 1px solid #107c10;
+}
+
+.validation-result.invalid {
+  background-color: rgba(197, 15, 31, 0.1);
+  border: 1px solid #c50f1f;
+}
+
+.validation-result h4 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.validation-result .errors {
+  margin-top: 10px;
+}
+
+.validation-result .errors ul {
+  margin-top: 5px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.validation-result .errors li {
+  margin: 5px 0;
+  color: #c50f1f;
+}

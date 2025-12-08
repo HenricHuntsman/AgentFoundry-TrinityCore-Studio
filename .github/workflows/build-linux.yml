@@ -1,0 +1,87 @@
+name: Build and Test - Linux
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Type check
+      run: npm run type-check
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Build main process
+      run: npm run build:main
+
+    - name: Build renderer
+      run: npm run build:renderer
+
+    - name: Run tests
+      run: npm test
+
+    - name: Package for Linux
+      run: npm run package:linux
+      
+    - name: Upload Linux artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: linux-build
+        path: |
+          release/*.AppImage
+          release/*.deb
+          release/*.rpm
+
+    - name: Validate server scripts
+      run: |
+        echo "Validating TrinityCore integration..."
+        # Add validation logic here
+        
+  validate-scripts:
+    runs-on: ubuntu-latest
+    needs: build-linux
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install Lua
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lua5.3
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Validate Lua scripts
+      run: |
+        echo "Running Lua validation..."
+        # Lua validation would go here
+        
+    - name: Validate C++ scripts
+      run: |
+        echo "Running C++ validation..."
+        # C++ validation would go here

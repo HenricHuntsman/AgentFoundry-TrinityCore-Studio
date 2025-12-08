@@ -1,0 +1,102 @@
+.server-manager {
+  max-width: 900px;
+}
+
+.server-manager h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.status-card {
+  background-color: #1e1e1e;
+  border: 1px solid #3e3e42;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.status-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.status-indicator {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.status-indicator.running {
+  color: #107c10;
+  background-color: rgba(16, 124, 16, 0.1);
+}
+
+.status-indicator.stopped {
+  color: #c50f1f;
+  background-color: rgba(197, 15, 31, 0.1);
+}
+
+.process-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.process {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #2d2d30;
+  border-radius: 4px;
+}
+
+.process span:first-child {
+  color: #cccccc;
+}
+
+.process span.running {
+  color: #107c10;
+}
+
+.process span.stopped {
+  color: #858585;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-panel {
+  background-color: #1e1e1e;
+  border: 1px solid #3e3e42;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.info-panel h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.info-panel p {
+  margin-bottom: 10px;
+  color: #cccccc;
+}
+
+.info-panel ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-panel li {
+  padding: 5px 0;
+  color: #858585;
+}

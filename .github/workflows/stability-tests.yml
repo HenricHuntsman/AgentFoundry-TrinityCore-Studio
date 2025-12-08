@@ -1,0 +1,76 @@
+name: Server Stability Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
+
+jobs:
+  stability-test-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Test server start
+      run: |
+        echo "Testing server start operation..."
+        # Would test actual server start here
+        
+    - name: Test server stop
+      run: |
+        echo "Testing server stop operation..."
+        # Would test actual server stop here
+        
+    - name: Test server restart
+      run: |
+        echo "Testing server restart operation..."
+        # Would test actual server restart here
+
+  stability-test-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build application
+      run: npm run build
+      
+    - name: Test server start
+      run: |
+        echo "Testing server start operation..."
+        # Would test actual server start here
+        
+    - name: Test server stop
+      run: |
+        echo "Testing server stop operation..."
+        # Would test actual server stop here
+        
+    - name: Test server restart
+      run: |
+        echo "Testing server restart operation..."
+        # Would test actual server restart here
