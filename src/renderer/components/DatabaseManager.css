@@ -1,0 +1,119 @@
+.database-manager {
+  max-width: 1400px;
+}
+
+.database-manager h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.connection-panel {
+  background: #252526;
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.connection-panel h3 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.connection-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #cccccc;
+}
+
+.database-content {
+  background: #252526;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.database-toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.table-select {
+  min-width: 200px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 4px;
+  background: #1e1e1e;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 800px;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #252526;
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
