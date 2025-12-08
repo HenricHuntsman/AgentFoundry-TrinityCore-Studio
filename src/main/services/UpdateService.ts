@@ -124,11 +124,13 @@ export class UpdateService {
             errors.push(`Line ${i + 1}: Unmatched parentheses`);
           }
 
-          // Check for missing semicolons at statement end
-          if (line.match(/^(CREATE|ALTER|DROP|INSERT|UPDATE|DELETE)/i) && 
+          // Check for missing semicolons at statement end (only for complete single-line statements)
+          if (line.match(/^(INSERT|UPDATE|DELETE)\s+/i) && 
               !line.endsWith(';') && 
-              !lines[i + 1]?.trim().startsWith('(')) {
-            errors.push(`Line ${i + 1}: Possible missing semicolon`);
+              !line.endsWith(',') &&
+              !lines[i + 1]?.trim().startsWith('(') &&
+              !lines[i + 1]?.trim().match(/^(VALUES|SET|WHERE|FROM)/i)) {
+            errors.push(`Line ${i + 1}: Possible missing semicolon (warning)`);
           }
         }
       }
@@ -155,7 +157,9 @@ export class UpdateService {
       if (type === 'lua') {
         // Use luac to check Lua syntax if available
         try {
-          await execAsync(`luac -p "${filePath}"`);
+          // Escape file path to prevent command injection
+          const escapedPath = filePath.replace(/"/g, '\\"');
+          await execAsync(`luac -p "${escapedPath}"`);
         } catch (error: any) {
           errors.push(error.message);
         }

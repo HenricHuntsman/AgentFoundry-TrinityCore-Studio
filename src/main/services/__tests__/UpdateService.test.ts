@@ -10,9 +10,10 @@ describe('UpdateService', () => {
   describe('validateSQLFile', () => {
     it('should detect unmatched parentheses', async () => {
       // Create a temporary SQL file with errors
-      const fs = require('fs/promises');
-      const path = require('path');
-      const tempFile = path.join('/tmp', 'test-invalid.sql');
+      import * as fs from 'fs/promises';
+      import * as path from 'path';
+      import * as os from 'os';
+      const tempFile = path.join(os.tmpdir(), 'test-invalid.sql');
       
       await fs.writeFile(tempFile, `
         CREATE TABLE test (
@@ -31,9 +32,10 @@ describe('UpdateService', () => {
     });
 
     it('should validate correct SQL syntax', async () => {
-      const fs = require('fs/promises');
-      const path = require('path');
-      const tempFile = path.join('/tmp', 'test-valid.sql');
+      import * as fs from 'fs/promises';
+      import * as path from 'path';
+      import * as os from 'os';
+      const tempFile = path.join(os.tmpdir(), 'test-valid.sql');
       
       await fs.writeFile(tempFile, `
         -- Comment
@@ -57,9 +59,10 @@ describe('UpdateService', () => {
 
   describe('validateScript', () => {
     it('should detect unmatched braces in C++ files', async () => {
-      const fs = require('fs/promises');
-      const path = require('path');
-      const tempFile = path.join('/tmp', 'test-invalid.cpp');
+      import * as fs from 'fs/promises';
+      import * as path from 'path';
+      import * as os from 'os';
+      const tempFile = path.join(os.tmpdir(), 'test-invalid.cpp');
       
       await fs.writeFile(tempFile, `
         #include <iostream>
@@ -79,9 +82,10 @@ describe('UpdateService', () => {
     });
 
     it('should validate correct C++ syntax', async () => {
-      const fs = require('fs/promises');
-      const path = require('path');
-      const tempFile = path.join('/tmp', 'test-valid.cpp');
+      import * as fs from 'fs/promises';
+      import * as path from 'path';
+      import * as os from 'os';
+      const tempFile = path.join(os.tmpdir(), 'test-valid.cpp');
       
       await fs.writeFile(tempFile, `
         #include <iostream>

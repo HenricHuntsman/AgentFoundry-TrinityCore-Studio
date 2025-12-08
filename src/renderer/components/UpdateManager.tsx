@@ -53,8 +53,16 @@ const UpdateManager: React.FC = () => {
   };
 
   const handleValidateSQL = async () => {
-    // This would open a file picker in a real implementation
+    // TODO: Implement file picker for SQL validation
+    // For now, this is a placeholder showing the validation flow
     const filePath = '/path/to/sql/file.sql';
+    setValidationResult({
+      type: 'SQL',
+      valid: false,
+      errors: ['File picker not yet implemented. This is a demo placeholder.'],
+    });
+    
+    /* Implementation note for future:
     try {
       const result = await window.electronAPI.validateSQL(filePath);
       setValidationResult({
@@ -68,6 +76,7 @@ const UpdateManager: React.FC = () => {
         errors: [String(error)],
       });
     }
+    */
   };
 
   return (
